@@ -1,6 +1,6 @@
 # Al-Quran
 
-## 🔴[LIVE DEMO](https://piprahut.vercel.app/)
+## 🔴[LIVE DEMO](https://al-quran-mh.vercel.app/)
 
 ### Home Page
 
