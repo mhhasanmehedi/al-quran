@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BsGrid1X2 } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
+import SurahListView from "../components/SurahListView";
+import SurahGridView from "../components/SurahGridView";
 
 const SurahDetail = () => {
   const { id } = useParams();
@@ -40,13 +42,13 @@ const SurahDetail = () => {
 
   return (
     <div className="container  mx-auto ">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2 mb-10">
+      <div className="flex justify-between items-center mb-10">
+        <div className="flex items-center gap-2 ">
           <Link to="/" className="font-bold text-slate-700 ">
             Home
           </Link>
           <span>/</span>
-          <Link to="/" className="font-bold text-emerald-700 underline ">
+          <Link to="/" className="font-bold text-emerald-700 capitalize">
             {surah?.name}
           </Link>
         </div>
@@ -69,58 +71,12 @@ const SurahDetail = () => {
           </button>
         </div>
       </div>
-      {view == "list" ? (
-        <div className="border  shadow-md">
-          <h3 className="bg-emerald-700 text-2xl uppercase font-serif tracking-widest text-white text-center p-3">
-            {surah?.name}
-          </h3>
-          <div className="flex flex-col  gap-3 p-10 ">
-            {versePairs?.map(({ verse1, verse2 }, i) => (
-              <div key={i} className="even:bg-gray-100 p-5">
-                <h2 className="text-right mb-4 text-xl">{verse1}</h2>
-                <h2 className="text-xl text-slate-800">{verse2}</h2>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-5">
-          <div className="border  shadow-md">
-            <h3 className="bg-emerald-700 text-2xl uppercase font-serif tracking-widest text-white text-center p-3">
-              Arabic
-            </h3>
-            <div className="flex flex-col items-end gap-3 p-10">
-              {surah != undefined &&
-                Object.keys(surah?.verse).map((key, i) => (
-                  <h1 className="" key={key}>
-                    {surah?.verse[key]}
-                    <span className=" text-emerald-700 font-bold ml-2 border-2 border-emerald-700 text-xs h-6 w-8 rounded-full text-center inline-flex items-center justify-center ">
-                      {i + 1}
-                    </span>
-                  </h1>
-                ))}
-            </div>
-          </div>
 
-          <div className="border shadow-md">
-            <h3 className="bg-emerald-700 text-2xl uppercase font-serif tracking-widest text-white text-center p-3">
-              English
-            </h3>
-            <div className="flex flex-col  gap-3  p-10 ">
-              {surahEn != undefined &&
-                Object.keys(surahEn?.verse).map((key, i) => (
-                  <h1 className="" key={key}>
-                    <span className=" text-emerald-700 font-bold mr-2 border-2 border-emerald-700 text-xs h-6 w-8 rounded-full text-center inline-flex items-center justify-center ">
-                      {i + 1}
-                    </span>
-                    {surahEn?.verse[key]}
-                  </h1>
-                ))}
-            </div>
-          </div>
-        </div>
+      {view == "list" ? (
+        <SurahListView versePairs={versePairs} surah={surah} />
+      ) : (
+        <SurahGridView surah={surah} surahEn={surahEn} />
       )}
-      {/* */}
     </div>
   );
 };
