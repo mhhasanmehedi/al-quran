@@ -18,7 +18,7 @@ const Surah = ({ surah }) => {
         {removeLeadingZeros(index)}
       </div>
       <h1 className="font-bold my-1 text-xl">{titleAr}</h1>
-      <h1 className="font-bold text-2xl">{title}</h1>
+      <h1 className="font-bold text-xl lg:text-2xl">{title}</h1>
       <p>{count} Ayahs</p>
     </Link>
   );
