@@ -41,7 +41,7 @@ const SurahDetail = () => {
   }
 
   return (
-    <div className="container  mx-auto ">
+    <div className="container px-4 mx-auto ">
       <div className="flex justify-between items-center mb-10">
         <div className="flex items-center gap-2 ">
           <Link to="/" className="font-bold text-slate-700 ">
